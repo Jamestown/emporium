@@ -1,6 +1,6 @@
 <tr>
-  <td><%= link_to author.name, :action => 'show', :id => author %></td>
-  <td><%= link_to 'Edit', :action => 'edit', :id => author %></td>
+  <td><%= link_to author.name, admin_author_path(author) %></td>
+  <td><%= link_to 'Edit', edit_admin_author_path(author) %></td>
   <td>
     <%= button_to 'Delete', {:action => 'destroy', :id => author},
         :confirm => "Are you sure you want to delete author #{author.name}?" %>

@@ -13,7 +13,7 @@ class Admin::AuthorControllerTest < ActionController::TestCase
     assert_template 'admin/author/new'
     assert_tag 'h1', :content => 'Create new author'    # These two lines should check
     assert_select 'h1', 'Create new author'             # the same thing
-    assert_tag 'form', :attributes => {:action => '/admin/author/create'}
+    assert_tag 'form', :attributes => {:action => '/admin/authors'}
     assert_select 'form input', :count => 3
   end
   

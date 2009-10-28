@@ -1,10 +1,10 @@
 <%= error_messages_for 'author' %>
 
 <p>
-  <label for="author_first_name">First name</label><br />
-  <%= text_field 'author', 'first_name' %>
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name%>
 </p>
 <p>
-  <label for="author_last_name">Last name</label><br />
-  <%= text_field 'author', 'last_name' %>
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name %>
 </p>

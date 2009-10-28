@@ -1,7 +1,7 @@
-<% form_tag :action => 'update', :id => @author do %>
-  <%= render :partial => 'author_form' %>
+<% form_for @author, :url => {:action => 'update'} do |f| %>
+  <%= render :partial => 'author_form', :locals => {:f => f} %>
   <%= submit_tag 'Edit' %>
 <% end %>
 
-<%= link_to 'Show', :action => 'show', :id => @author %> | 
-<%= link_to 'Back', :action => 'index' %>
+<%= link_to 'Show', admin_author_path(@author) %> | 
+<%= link_to 'Back', admin_authors_path %>

@@ -1,0 +1,9 @@
+<h1>Editing publisher</h1>
+
+<% form_for @publisher, :url => {:action => 'update'} do |f| %>
+  <%= render :partial => 'publisher_form', :locals => {:f => f} %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', admin_publisher_path(@publisher) %> |
+<%= link_to 'Back', admin_publishers_path %>
