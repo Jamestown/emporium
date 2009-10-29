@@ -1,0 +1,39 @@
+<p>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :publisher %><br />
+  <%= f.collection_select :publisher_id, @publishers, :id, :name %>
+</p>
+<p>
+  <%= f.label :authors %><br />
+  <%= select_tag 'book[author_ids][]',
+        options_from_collection_for_select(@authors, :id, :name,
+          @book.authors.collect { |author| author.id }),
+        {:multiple => true, :size => 5} %>
+</p>
+<p>
+  <%= f.label :published_at %><br />
+  <%= f.datetime_select :published_at %>
+</p>
+<p>
+  <%= f.label :isbn %><br />
+  <%= f.text_field :isbn %>
+</p>
+<p>
+  <%= f.label :blurb %><br />
+  <%= f.text_area :blurb %>
+</p>
+<p>
+  <%= f.label :price %><br />
+  <%= f.text_field :price %>
+</p>
+<p>
+  <%= f.label :page_count %><br />
+  <%= f.text_field :page_count %>
+</p>
+<p>
+  <%= f.label :cover_image %><br />
+  <%= file_column_field 'book', 'cover_image' %>
+</p>

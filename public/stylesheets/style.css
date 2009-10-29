@@ -162,3 +162,7 @@ body {
   margin-right: 230px;
 }
 
+#index_item_list td,
+#index_item_list th {
+  padding: 5px;
+}

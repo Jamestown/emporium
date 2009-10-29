@@ -5,8 +5,8 @@ class Admin::PublisherController < ApplicationController
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create ],
-         :redirect_to => { :action => :list }
+  #verify :method => :post, :only => [ :destroy, :create ],
+  #       :redirect_to => { :action => :list }
 
   def list
     #@publisher_pages, @publishers = paginate :publishers, :per_page => 10
@@ -47,7 +47,9 @@ class Admin::PublisherController < ApplicationController
   end
 
   def destroy
-    Publisher.find(params[:id]).destroy
+    @publisher = Publisher.find(params[:id])
+    flash[:notice] = "Successfully deleted publisher #{@publisher.name}"
+    @publisher.destroy
     redirect_to :action => 'list'
   end
 end

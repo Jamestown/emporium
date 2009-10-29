@@ -1,0 +1,10 @@
+<% form_for @book, :url => {:action => 'update'}, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'book_form', :locals => {:f => f}%>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_book_path(@book) %> |
+<%= link_to 'Back', admin_books_path %>

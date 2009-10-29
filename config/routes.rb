@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
-  
   map.namespace('admin') do |admin|
-    admin.resources :authors, :path_prefix => 'admin', :controller => 'author'
-    admin.resources :publishers, :path_prefix => 'admin', :controller => 'publisher'
+    admin.resources :authors,  :controller => 'author'
+    admin.resources :publishers, :controller => 'publisher'
+    admin.resources :books, :controller => 'books', :collection => {:list => :get}
   end
   
+  map.root :controller => 'admin/books', :action => 'index'
   map.about 'about/', :controller => 'about', :action => 'index'
   
   map.connect ':controller/:action/:id'

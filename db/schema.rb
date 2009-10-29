@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091028043817) do
+ActiveRecord::Schema.define(:version => 20091029053702) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20091028043817) do
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover_image"
   end
 
   add_index "books", ["publisher_id"], :name => "fk_books_publishers"
