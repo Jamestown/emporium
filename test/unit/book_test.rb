@@ -76,4 +76,23 @@ class BookTest < ActiveSupport::TestCase
     assert_equal 2, Author.find_by_first_name_and_last_name('Christian', 'Hellsten').books.size
   end
   
+  def test_ferret
+    Book.rebuild_index
+    
+    assert Book.find_with_ferret('Pride and Prejudice')
+    
+    assert_difference(Book, :count, 1) do
+      book = Book.new(:title => 'The Success of Open Source', :published_at => Time.now,
+        :page_count => 500, :price => 59.99, :isbn => '0-674-01292-5')
+      book.authors << Author.create(:first_name => 'Steven', :last_name => 'Weber')
+      book.publisher = Publisher.find(1)
+      
+      assert book.valid?
+      book.save
+      
+      assert_equal 1, Book.find_with_ferret('Open Source').size
+      assert_equal 1, Book.find_with_ferret('Steven Weber').size
+    end
+  end
+  
 end

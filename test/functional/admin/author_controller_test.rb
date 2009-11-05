@@ -63,16 +63,16 @@ class Admin::AuthorControllerTest < ActionController::TestCase
   def test_show
     get :show, :id => 1
     assert_template 'admin/author/show'
-    assert_equal 'Joel', assigns(:author).first_name
-    assert_equal 'Spolsky', assigns(:author).last_name
+    assert_equal 'Jarkko', assigns(:author).first_name
+    assert_equal 'Laine', assigns(:author).last_name
   end
   
   def test_edit
     get :edit, :id => 1
     assert_tag :tag => 'input',
-      :attributes => {:name => 'author[first_name]', :value => 'Joel'}
+      :attributes => {:name => 'author[first_name]', :value => 'Jarkko'}
     assert_tag :tag => 'input',
-      :attributes => {:name => 'author[last_name]', :value => 'Spolsky'}
+      :attributes => {:name => 'author[last_name]', :value => 'Laine'}
   end
   
   def test_update

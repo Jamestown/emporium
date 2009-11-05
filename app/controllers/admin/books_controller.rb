@@ -8,8 +8,7 @@ class Admin::BooksController < ApplicationController
   def list
     @page_title = 'Listing books'
     sort_by = params[:sort_by]
-    #@books = Book.all
-    @books = Book.paginate :per_page => 5, :page => params[:page], :order => sort_by
+    @books = Book.paginate :per_page => 10, :page => params[:page], :order => sort_by
   end
   
   def show
@@ -47,6 +46,7 @@ class Admin::BooksController < ApplicationController
       flash[:notice] = 'Book was successfully updated.'
       redirect_to :action => 'show', :id => @book
     else
+      load_data
       render :action => 'edit'
     end
   end

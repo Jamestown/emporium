@@ -1,0 +1,8 @@
+<%= render :partial => 'search_box' %>
+
+<% if @books %>
+  <p>
+    You search "<%= params[:q] %>" produced <%= pluralize(@books.size, 'result') %>:
+  </p>
+  <%= render :partial => 'books' %>
+<% end %>

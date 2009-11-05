@@ -27,7 +27,7 @@ class BookTest < ActionController::IntegrationTest
       :publisher_id => publisher.id,
       :author_ids => [author.id],
       :published_at => Time.now,
-      :isbn => '123-123-123-X',
+      :isbn => '123-123-123-Z',
       :blurb => 'The best book released since "Eating for Toddlers"',
       :page_count => 123,
       :price => 40.4
@@ -70,7 +70,7 @@ class BookTest < ActionController::IntegrationTest
       end
       
       def show_book(book)
-        get "/admin/books/show/#{book.id}"
+        get "/admin/books/#{book.id}"
         assert_response :success
         assert_template 'admin/books/show'
       end
@@ -80,7 +80,7 @@ class BookTest < ActionController::IntegrationTest
         assert_response :success
         assert_template 'admin/books/edit'
         
-        put "/admin/books/#{book.id}/", parameters
+        put "/admin/books/#{book.id}", parameters
         assert_response :redirect
         follow_redirect!
         assert_response :success

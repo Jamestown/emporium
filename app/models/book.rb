@@ -3,6 +3,8 @@ class Book < ActiveRecord::Base
   has_and_belongs_to_many :authors
   belongs_to :publisher
   
+  acts_as_ferret :fields => [:title, :author_names]
+  
   file_column :cover_image
   
   validates_presence_of :title, :in => 1..255
@@ -13,5 +15,16 @@ class Book < ActiveRecord::Base
   validates_numericality_of :price
   validates_format_of :isbn, :with => /[0-9\-xX]{10,13}/
   validates_uniqueness_of :isbn
+  
+  def author_names
+    self.authors.map do |a|
+      a.name
+    end.join(', ') rescue ''
+  end
+  
+  def self.latest
+    find :all, :limit => 10, :order => 'books.id DESC',
+      :include => [:authors, :publisher]
+  end
   
 end

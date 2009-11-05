@@ -5,6 +5,7 @@
   <title><%= @page_title || 'Emporium' %></title>
 
   <%= stylesheet_link_tag "style" %>
+  <%= auto_discovery_link_tag(:rss, {:controller => 'catalog', :action => 'rss'}) %>
 </head>
 <body>
 
